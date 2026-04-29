@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imali Punsara Dissanayaka | Data Analyst & BI Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07070e;--bg2:#0d0d18;--bg3:#12121e;
+  --card:#17172a;--card2:#1d1d30;
+  --accent:#7c6ef7;--accent2:#a99cfa;--accent3:#c8c2fd;
+  --text:#f0eff8;--text2:#a09db8;--text3:#6b6884;
+  --border:rgba(124,110,247,0.18);--border2:rgba(124,110,247,0.08);
+  --tag-bg:rgba(124,110,247,0.12);--tag-text:#a99cfa;
+  --green:#4ecb8d;--coral:#f0997b;--amber:#f5c475;--pink:#e879a0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;overflow-x:hidden}
+
+/* scrollbar */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:64px;background:rgba(7,7,14,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border2)}
+.logo{font-family:'DM Serif Display',serif;font-size:20px;color:var(--accent2);text-decoration:none;letter-spacing:-0.02em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text3);font-size:13px;font-weight:400;transition:color 0.2s;letter-spacing:0.03em}
+.nav-links a:hover{color:var(--accent2)}
+.nav-cta{background:var(--accent);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;transition:opacity 0.2s;font-family:'DM Sans',sans-serif}
+.nav-cta:hover{opacity:0.85}
+
+/* HERO */
+#home{min-height:100vh;display:flex;align-items:center;padding:80px 6% 60px;position:relative;overflow:hidden}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center}
+
+/* glow orbs */
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.orb1{width:500px;height:500px;background:rgba(124,110,247,0.08);top:-100px;right:-100px}
+.orb2{width:400px;height:400px;background:rgba(78,203,141,0.05);bottom:-100px;left:-100px}
+.orb3{width:300px;height:300px;background:rgba(232,121,160,0.05);top:50%;left:40%}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(78,203,141,0.1);border:1px solid rgba(78,203,141,0.25);border-radius:100px;padding:5px 16px;font-size:12px;color:var(--green);margin-bottom:1.5rem;width:fit-content;letter-spacing:0.04em}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,5vw,4rem);line-height:1.08;letter-spacing:-0.03em;color:var(--text);margin-bottom:0.6rem}
+.hero-name em{color:var(--accent2);font-style:italic}
+
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5rem}
+.role-chip{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:12px;color:var(--tag-text);font-weight:500;letter-spacing:0.02em}
+.role-chip.g{background:rgba(78,203,141,0.1);border-color:rgba(78,203,141,0.2);color:var(--green)}
+.role-chip.c{background:rgba(240,153,123,0.1);border-color:rgba(240,153,123,0.2);color:var(--coral)}
+.role-chip.a{background:rgba(245,196,117,0.1);border-color:rgba(245,196,117,0.2);color:var(--amber)}
+
+.hero-desc{font-size:15px;color:var(--text2);font-weight:300;max-width:480px;margin-bottom:2.5rem;line-height:1.75}
+
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:13px 30px;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--accent2);border:1px solid var(--border);padding:13px 30px;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px}
+.btn-outline:hover{background:var(--tag-bg);transform:translateY(-2px)}
+
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.stat-box{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:1rem;text-align:center}
+.stat-num{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--accent2);line-height:1}
+.stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px}
+
+/* PROFILE CARD */
+.profile-card{background:var(--card);border:1px solid var(--border2);border-radius:24px;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.profile-img-wrap{position:relative;width:160px;height:160px}
+.profile-img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);display:block}
+.profile-img-placeholder{width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,var(--card2),var(--accent) 150%);border:3px solid var(--accent);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px}
+.profile-img-placeholder span{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--accent2)}
+.profile-img-placeholder small{font-size:10px;color:var(--text3);letter-spacing:0.06em;text-align:center;line-height:1.4;padding:0 10px}
+.profile-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid transparent;border-top-color:var(--accent);border-right-color:var(--accent2);animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.profile-name{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);text-align:center}
+.profile-title{font-size:12px;color:var(--text3);text-align:center;font-weight:300;letter-spacing:0.03em}
+.profile-uni{font-size:12px;color:var(--accent2);text-align:center;font-weight:500;margin-top:-4px}
+
+.profile-links{display:flex;gap:10px;width:100%}
+.profile-social{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:8px;font-size:12px;color:var(--text2);text-decoration:none;transition:all 0.2s}
+.profile-social:hover{border-color:var(--border);color:var(--accent2)}
+.profile-social svg{width:14px;height:14px;flex-shrink:0}
+
+.cv-download-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(124,110,247,0.15);border:1px solid var(--border);border-radius:10px;padding:11px;font-size:13px;color:var(--accent2);text-decoration:none;font-weight:500;transition:all 0.2s;cursor:pointer}
+.cv-download-btn:hover{background:rgba(124,110,247,0.25);transform:translateY(-1px)}
+.cv-download-btn svg{width:16px;height:16px;flex-shrink:0}
+
+.profile-stack{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.stack-pill{background:var(--tag-bg);border:1px solid var(--border2);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--tag-text)}
+
+/* SECTION */
+.section-wrap{max-width:1100px;margin:0 auto;padding:80px 6%}
+.section-label{font-size:11px;color:var(--accent2);text-transform:uppercase;letter-spacing:0.14em;font-weight:500;margin-bottom:6px}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);letter-spacing:-0.02em;color:var(--text);margin-bottom:2.5rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-text p{color:var(--text2);font-weight:300;margin-bottom:1rem;font-size:15px;line-height:1.8}
+.about-text p strong{color:var(--text);font-weight:500}
+.about-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:1.5rem}
+.about-card-label{font-size:11px;color:var(--accent2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem}
+.pill-group{display:flex;flex-wrap:wrap;gap:7px}
+.pill{background:var(--tag-bg);color:var(--tag-text);border:1px solid var(--border2);border-radius:100px;padding:4px 13px;font-size:13px}
+.pill.g{background:rgba(78,203,141,0.1);color:var(--green);border-color:rgba(78,203,141,0.2)}
+.pill.a{background:rgba(245,196,117,0.1);color:var(--amber);border-color:rgba(245,196,117,0.2)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem}
+.skill-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:1.25rem 1.5rem;transition:all 0.25s;position:relative;overflow:hidden}
+.skill-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,110,247,0.04),transparent);opacity:0;transition:opacity 0.25s}
+.skill-card:hover{border-color:var(--border);transform:translateY(-3px)}
+.skill-card:hover::before{opacity:1}
+.skill-cat{font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px}
+.skill-name{font-size:15px;color:var(--text);font-weight:500;margin-bottom:4px}
+.skill-sub{font-size:12px;color:var(--text3);font-weight:300;line-height:1.5}
+.skill-bar{height:2px;background:var(--border2);border-radius:2px;margin-top:12px;overflow:hidden}
+.skill-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1.2s ease}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
+.project-card{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:1.75rem;transition:all 0.28s;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.project-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,110,247,0.04),transparent);opacity:0;transition:opacity 0.28s;pointer-events:none}
+.project-card:hover{border-color:rgba(124,110,247,0.3);transform:translateY(-4px)}
+.project-card:hover::after{opacity:1}
+.project-card.featured{border-color:rgba(124,110,247,0.25)}
+.project-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.project-year-badge{font-size:11px;color:var(--text3);background:var(--bg3);border:1px solid var(--border2);border-radius:100px;padding:3px 10px}
+.featured-badge{font-size:10px;color:var(--green);background:rgba(78,203,141,0.1);border:1px solid rgba(78,203,141,0.2);border-radius:100px;padding:3px 10px;font-weight:500;letter-spacing:0.04em}
+.project-title{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--text);margin-bottom:0.75rem;line-height:1.3}
+.project-desc{font-size:13.5px;color:var(--text2);font-weight:300;flex:1;margin-bottom:1.25rem;line-height:1.7}
+.project-highlight{font-size:12px;color:var(--green);background:rgba(78,203,141,0.08);border-left:2px solid var(--green);padding:6px 10px;border-radius:0 6px 6px 0;margin-bottom:1.25rem;font-weight:500}
+.tool-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem}
+.tool-tag{background:var(--tag-bg);color:var(--tag-text);border-radius:100px;padding:3px 10px;font-size:11px;border:1px solid var(--border2)}
+.gh-link{display:inline-flex;align-items:center;gap:7px;color:var(--accent2);text-decoration:none;font-size:13px;font-weight:500;transition:all 0.2s;padding:8px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;width:fit-content}
+.gh-link:hover{border-color:var(--border);color:var(--accent3);transform:translateX(3px)}
+.gh-link svg{width:14px;height:14px;flex-shrink:0}
+
+/* EDUCATION */
+.timeline{position:relative;padding-left:2.5rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),transparent)}
+.tl-item{position:relative;margin-bottom:2.5rem}
+.tl-item::before{content:'';position:absolute;left:-2.5rem;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent);transform:translateX(-4.5px);box-shadow:0 0 0 3px var(--bg),0 0 0 5px rgba(124,110,247,0.3)}
+.tl-period{font-size:11px;color:var(--accent2);font-weight:500;letter-spacing:0.04em;margin-bottom:4px}
+.tl-degree{font-size:16px;color:var(--text);font-weight:500;margin-bottom:3px}
+.tl-school{font-size:13px;color:var(--text3);font-weight:300}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.cert-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:1.25rem 1.5rem;transition:border-color 0.2s,transform 0.2s}
+.cert-card:hover{border-color:var(--border);transform:translateY(-2px)}
+.cert-issuer{font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px}
+.cert-name{font-size:14px;color:var(--text);font-weight:500;margin-bottom:4px}
+.cert-date{font-size:12px;color:var(--text3)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-intro{color:var(--text2);font-weight:300;font-size:15px;line-height:1.8;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:10px}
+.contact-link{display:flex;align-items:center;gap:1rem;background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:1rem 1.25rem;text-decoration:none;color:var(--text);transition:all 0.2s}
+.contact-link:hover{border-color:var(--border);transform:translateX(5px)}
+.contact-icon{width:42px;height:42px;border-radius:10px;background:var(--tag-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-icon svg{width:18px;height:18px;color:var(--accent2)}
+.contact-lbl{font-size:10px;color:var(--text3);letter-spacing:0.06em;margin-bottom:2px;text-transform:uppercase}
+.contact-val{font-size:13px;color:var(--text2)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border2);padding:2rem 6%;text-align:center;color:var(--text3);font-size:13px;font-weight:300}
+footer span{color:var(--accent2)}
+
+/* DIVIDER */
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);max-width:1100px;margin:0 auto}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .profile-card{max-width:400px;margin:0 auto}
+  .nav-links,.nav-cta{display:none}
+}
+@media(max-width:600px){
+  .projects-grid{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+}
+
+/* SCROLL ANIMATION */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="logo">&lt;IPD /&gt;</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="Imali_punsara.pdf" download class="nav-cta">Download CV</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="hero-inner">
+    <!-- LEFT -->
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Open to Opportunities · 3rd Year Undergraduate
+      </div>
+      <h1 class="hero-name">Hi, I'm<br><em>Imali Punsara</em></h1>
+      <div class="roles">
+        <span class="role-chip">Data Analyst</span>
+        <span class="role-chip g">BI Developer</span>
+        <span class="role-chip a">Report Writer</span>
+        <span class="role-chip c">Data Visualizer</span>
+      </div>
+      <p class="hero-desc">Applied Data Science undergraduate transforming complex datasets into clear, actionable insights — through interactive dashboards, predictive models, and compelling data stories.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M13 6l6 6-6 6"/></svg>
+          Explore My Work
+        </a>
+        <a href="Imali_punsara.pdf" download class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download CV
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">3rd</div>
+          <div class="stat-label">Year · KDU</div>
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT — PROFILE CARD -->
+    <div class="profile-card">
+      <div class="profile-img-wrap">
+        <img src="profile.png" alt="Imali Punsara Dissanayaka" class="profile-img">
+        <div class="profile-ring"></div>
+      </div>
+      <div class="profile-name">Imali Punsara Dissanayaka</div>
+      <div class="profile-title">Data Analyst · BI Developer · Visualizer</div>
+      <div class="profile-uni">KDU · Applied Data Science</div>
+      <div class="profile-links">
+        <a href="https://linkedin.com/in/imali-dissanayaka" target="_blank" class="profile-social">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/imali05" target="_blank" class="profile-social">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+      <a href="Imali_punsara.pdf" download class="cv-download-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download My CV
+      </a>
+      <div class="profile-stack">
+        <span class="stack-pill">Python</span>
+        <span class="stack-pill">SQL</span>
+        <span class="stack-pill">Power BI</span>
+        <span class="stack-pill">R</span>
+        <span class="stack-pill">DAX</span>
+        <span class="stack-pill">Excel</span>
+        <span class="stack-pill">Machine Learning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about" style="padding:0">
+<div class="section-wrap fade-up">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">Who I Am</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm <strong>Imali Punsara Dissanayaka</strong>, a detail-oriented third-year undergraduate studying <strong>Applied Data Science & Communication</strong> at General Sir John Kotelawala Defence University (KDU), Ratmalana.</p>
+      <p>I specialise in turning raw, messy data into meaningful insights and visual stories. As a <strong>Data Analyst</strong> and <strong>BI Developer</strong>, I build interactive dashboards, predictive models, and automated reports that help organisations make smarter, data-driven decisions.</p>
+      <p>My toolkit spans <strong>SQL, Python, Power BI, R</strong>, and machine learning — and I'm passionate about applying these skills to real-world problems in sustainability, public health, and policy analysis.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div class="about-card">
+        <div class="about-card-label">Soft Skills</div>
+        <div class="pill-group">
+          <span class="pill">Analytical Thinking</span>
+          <span class="pill">Problem Solving</span>
+          <span class="pill">Communication</span>
+          <span class="pill">Teamwork</span>
+          <span class="pill">Time Management</span>
+          <span class="pill">Attention to Detail</span>
+          <span class="pill">Adaptability</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Languages</div>
+        <div class="pill-group">
+          <span class="pill g">English</span>
+          <span class="pill g">Sinhala</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Currently</div>
+        <p style="font-size:14px;color:var(--text2);font-weight:300">3rd Year · BSc Applied Data Science & Communication<br><span style="color:var(--accent2);font-weight:500">General Sir John Kotelawala Defence University</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" style="padding:0">
+<div class="section-wrap fade-up">
+  <div class="section-label">Technical Skills</div>
+  <h2 class="section-title">What I Work With</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-cat">Visualisation</div>
+      <div class="skill-name">Power BI</div>
+      <div class="skill-sub">DAX · Data Modeling · Power Query · Star Schema</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Visualisation</div>
+      <div class="skill-name">Excel</div>
+      <div class="skill-sub">Advanced Analytics · Pivot Tables · Dashboards</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Programming</div>
+      <div class="skill-name">Python</div>
+      <div class="skill-sub">Pandas · NumPy · Scikit-learn · Streamlit · Matplotlib</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:82%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Programming</div>
+      <div class="skill-name">R</div>
+      <div class="skill-sub">ggplot2 · Statistical Modeling · Clustering</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Database</div>
+      <div class="skill-name">SQL</div>
+      <div class="skill-sub">SQL Server · T-SQL · Aggregation Views · Modeling</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Machine Learning</div>
+      <div class="skill-name">Supervised Learning</div>
+      <div class="skill-sub">Random Forest · Gradient Boosting · Decision Tree · KNN</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Machine Learning</div>
+      <div class="skill-name">Unsupervised Learning</div>
+      <div class="skill-sub">K-Means · DBSCAN · Hierarchical Clustering</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">AI</div>
+      <div class="skill-name">Basic NLP & GenAI</div>
+      <div class="skill-sub">Text Processing · Gemini API · PyPDF2</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Core Concepts</div>
+      <div class="skill-name">EDA & Statistics</div>
+      <div class="skill-sub">Data Cleaning · Transformation · Trend & Pattern Analysis</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Core Concepts</div>
+      <div class="skill-name">Report Writing</div>
+      <div class="skill-sub">Data Storytelling · Insight Communication · Documentation</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" style="padding:0">
+<div class="section-wrap fade-up">
+  <div class="section-label">My Work</div>
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="projects-grid">
+
+    <!-- 1 -->
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-year-badge">2025</span>
+      </div>
+      <h3 class="project-title">UK Study & Work Visa Sponsorship Analysis</h3>
+      <p class="project-desc">Cleaned and modelled UK Home Office Managed Migration datasets in SQL Server, building aggregation views and a star-schema data model. Developed two interactive Power BI dashboards visualising sponsorship trends, nationality distributions, and policy impacts from 2010–2023.</p>
+      <div class="tool-tags">
+        <span class="tool-tag">SQL Server</span><span class="tool-tag">T-SQL</span><span class="tool-tag">Power BI</span><span class="tool-tag">DAX</span><span class="tool-tag">Power Query</span>
+      </div>
+      <a href="https://github.com/imali05/uk-visa-sponsorship-analysis" target="_blank" class="gh-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- 2 -->
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-year-badge">2025</span>
+      </div>
+      <h3 class="project-title">Global GHG Emissions & Renewable Energy Analysis</h3>
+      <p class="project-desc">Integrated multi-country UN SDG emissions and renewable energy datasets in SQL Server. Developed a multi-page Power BI dashboard with advanced DAX for year-on-year growth analysis, sustainability scorecards, and cross-country comparisons (2000–2021).</p>
+      <div class="tool-tags">
+        <span class="tool-tag">SQL Server</span><span class="tool-tag">Power BI</span><span class="tool-tag">DAX</span><span class="tool-tag">Data Modeling</span>
+      </div>
+      <a href="https://github.com/imali05/GHG-renewable-energy-dashboard" target="_blank" class="gh-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- 3 -->
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-year-badge">2024</span>
+      </div>
+      <h3 class="project-title">Crime Trends Analysis & Visualisation Dashboard</h3>
+      <p class="project-desc">Cleaned and transformed large-scale crime datasets in SQL Server, handling missing values, removing duplicates, and standardising records. Built an interactive Power BI dashboard with DAX measures to analyse crime trends, geographical patterns, and yearly growth rates across suburbs and categories.</p>
+      <div class="tool-tags">
+        <span class="tool-tag">SQL Server</span><span class="tool-tag">Power BI</span><span class="tool-tag">DAX</span><span class="tool-tag">Data Modeling</span>
+      </div>
+      <a href="https://github.com/imali05/crime-trends-visualization-powerbi" target="_blank" class="gh-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- 4 -->
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-year-badge">2025</span>
+      </div>
+      <h3 class="project-title">Health Expenditure Analysis in Australia</h3>
+      <p class="project-desc">Applied classification models (Decision Tree, Random Forest, KNN) and clustering techniques (K-Means, DBSCAN, Hierarchical, GMM) to analyse Australian health expenditure patterns in R.</p>
+      <div class="project-highlight">89.2% accuracy achieved with Random Forest</div>
+      <div class="tool-tags">
+        <span class="tool-tag">R Studio</span><span class="tool-tag">ggplot2</span><span class="tool-tag">Random Forest</span><span class="tool-tag">K-Means</span><span class="tool-tag">DBSCAN</span>
+      </div>
+      <a href="https://github.com/imali05/health-expenditure-australia-data-mining" target="_blank" class="gh-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- 5 -->
+    <div class="project-card featured">
+      <div class="project-top">
+        <span class="project-year-badge">2026</span>
+        <span class="featured-badge">Featured</span>
+      </div>
+      <h3 class="project-title">Sri Lanka Flood Risk Prediction System</h3>
+      <p class="project-desc">Designed an end-to-end CRISP-DM data mining pipeline to predict flood risk using 25,000 geo-tagged environmental and geographic records. Built with Logistic Regression, Decision Tree, Random Forest, and Gradient Boosting — with a real-time deployment module.</p>
+      <div class="project-highlight">91.5% accuracy with Gradient Boosting</div>
+      <div class="tool-tags">
+        <span class="tool-tag">Python</span><span class="tool-tag">Scikit-learn</span><span class="tool-tag">Gradient Boosting</span><span class="tool-tag">Pandas</span><span class="tool-tag">Seaborn</span>
+      </div>
+      <a href="https://github.com/imali05/flood-risk-prediction-sri-lanka" target="_blank" class="gh-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- 6 -->
+    <div class="project-card featured">
+      <div class="project-top">
+        <span class="project-year-badge">2026</span>
+        <span class="featured-badge">Featured</span>
+      </div>
+      <h3 class="project-title">Policy Summariser & Scenario Generator</h3>
+      <p class="project-desc">AI-powered web app that extracts and summarises policy documents (PDF/text) and generates scenario-based policy drafts tailored to Healthcare, Education, and Agriculture sectors using Google Gemini API. Features real-time progress tracking and downloadable AI-generated drafts.</p>
+      <div class="tool-tags">
+        <span class="tool-tag">Python</span><span class="tool-tag">Streamlit</span><span class="tool-tag">Gemini AI</span><span class="tool-tag">PyPDF2</span><span class="tool-tag">NLP</span>
+      </div>
+      <a href="https://github.com/imali05/Policy-ai-summarization" target="_blank" class="gh-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education" style="padding:0">
+<div class="section-wrap fade-up">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">Academic Journey</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-period">2024 – Present · 3rd Year</div>
+      <div class="tl-degree">BSc in Applied Data Science & Communication</div>
+      <div class="tl-school">General Sir John Kotelawala Defence University (KDU), Ratmalana</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">May 2023 – Oct 2023</div>
+      <div class="tl-degree">Diploma in English Language</div>
+      <div class="tl-school">International Buddhist Academy, Kandy</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">2019 – 2021</div>
+      <div class="tl-degree">G.C.E. Advanced Level — Commerce Stream</div>
+      <div class="tl-school">MO/Pangnananda Maha Vidyalaya, Monaragala</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">2012 – 2017</div>
+      <div class="tl-degree">G.C.E. Ordinary Level — English Medium</div>
+      <div class="tl-school">MO/Mahanama Central College, Monaragala</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="padding:0">
+<div class="section-wrap fade-up">
+  <div class="section-label">Certifications</div>
+  <h2 class="section-title">Credentials</h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-issuer">University of Moratuwa</div>
+      <div class="cert-name">Python for Beginners</div>
+      <div class="cert-date">January 2026</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">University of Moratuwa</div>
+      <div class="cert-name">Python Programming</div>
+      <div class="cert-date">January 2026</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">IBM SkillsBuild</div>
+      <div class="cert-name">Data Fundamentals</div>
+      <div class="cert-date">April 2026</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">Simplilearn</div>
+      <div class="cert-name">Introduction to MS Excel</div>
+      <div class="cert-date">April 2026</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">Simplilearn</div>
+      <div class="cert-name">Introduction to SQL</div>
+      <div class="cert-date">April 2026</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">Simplilearn</div>
+      <div class="cert-name">Machine Learning Using Python</div>
+      <div class="cert-date">April 2026</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:0">
+<div class="section-wrap fade-up">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let's Connect</h2>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">I'm always open to new opportunities, collaborative data projects, or conversations about analytics and BI. Whether you have a question or just want to say hi — feel free to reach out!</p>
+      <a href="Imali_punsara.pdf" download class="btn-primary" style="width:fit-content">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download My CV
+      </a>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:imali.p.dissanayaka@gmail.com" class="contact-link">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+        <div><div class="contact-lbl">Email</div><div class="contact-val">imali.p.dissanayaka@gmail.com</div></div>
+      </a>
+      <a href="tel:+94740290799" class="contact-link">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+        <div><div class="contact-lbl">Phone</div><div class="contact-val">+94 74 0290799</div></div>
+      </a>
+      <a href="https://linkedin.com/in/imali-dissanayaka" target="_blank" class="contact-link">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <div><div class="contact-lbl">LinkedIn</div><div class="contact-val">imali-dissanayaka</div></div>
+      </a>
+      <a href="https://github.com/imali05" target="_blank" class="contact-link">
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="contact-lbl">GitHub</div><div class="contact-val">github.com/imali05</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&lt;IPD /&gt; · Turning data into decisions, one model at a time · <span>Imali Punsara Dissanayaka</span> © 2026</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, {threshold: 0.1});
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
